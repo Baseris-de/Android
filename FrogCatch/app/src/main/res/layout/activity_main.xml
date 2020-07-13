@@ -11,8 +11,9 @@
         android:layout_width="49dp"
         android:layout_height="34dp"
         android:layout_marginStart="19dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="22dp"
+        android:gravity="center_horizontal|center_vertical"
         android:text="Name:"
         app:layout_constraintEnd_toStartOf="@+id/txtName"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +39,7 @@
         android:layout_height="66dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:onClick="onplayGame"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
@@ -53,5 +55,48 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtName"
         app:srcCompat="@drawable/frog00" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="371dp"
+        android:layout_height="53dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.616">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="checkButton"
+            android:text="Easy" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="71dp"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="Mid" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="Difficult" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="126dp"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="Very difficult" />
+
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
