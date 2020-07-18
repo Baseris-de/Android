@@ -7,17 +7,46 @@
     tools:context=".GameActivity">
 
     <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayouttop"
+        android:layout_width="390dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/viewName"
+            android:layout_width="260dp"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:text="Name"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/viewTimer"
+            android:layout_width="130dp"
+            android:layout_height="25dp"
+            android:text="Timer"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </androidx.gridlayout.widget.GridLayout>
+
+
+    <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="390dp"
         android:layout_height="510dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/viewScore"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayoutfoot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewName">
+        app:layout_constraintTop_toBottomOf="@+id/gridLayouttop">
 
         <ImageView
             android:id="@+id/viewfrog00"
@@ -26,7 +55,6 @@
             android:onClick="addScore"
             app:layout_column="0"
             app:layout_row="0"
-            android:visibility="invisible"
             app:srcCompat="@drawable/frog22" />
 
         <ImageView
@@ -36,7 +64,6 @@
             android:onClick="addScore"
             app:layout_column="1"
             app:layout_row="0"
-            android:visibility="invisible"
             app:srcCompat="@drawable/frog22" />
 
         <ImageView
@@ -46,7 +73,6 @@
             android:onClick="addScore"
             app:layout_column="2"
             app:layout_row="0"
-            android:visibility="invisible"
             app:srcCompat="@drawable/frog22" />
 
         //2.row
@@ -58,7 +84,6 @@
             android:onClick="addScore"
             app:layout_column="0"
             app:layout_row="1"
-            android:visibility="invisible"
             app:srcCompat="@drawable/frog22" />
 
         <ImageView
@@ -68,7 +93,6 @@
             android:onClick="addScore"
             app:layout_column="1"
             app:layout_row="1"
-            android:visibility="invisible"
             app:srcCompat="@drawable/frog22" />
 
         <ImageView
@@ -78,7 +102,6 @@
             android:onClick="addScore"
             app:layout_column="2"
             app:layout_row="1"
-            android:visibility="invisible"
             app:srcCompat="@drawable/frog22" />
         //3.row
 
@@ -89,7 +112,6 @@
             android:onClick="addScore"
             app:layout_column="0"
             app:layout_row="2"
-            android:visibility="invisible"
             app:srcCompat="@drawable/frog22" />
 
         <ImageView
@@ -99,7 +121,6 @@
             android:onClick="addScore"
             app:layout_column="1"
             app:layout_row="2"
-            android:visibility="invisible"
             app:srcCompat="@drawable/frog22" />
 
         <ImageView
@@ -109,13 +130,15 @@
             android:onClick="addScore"
             app:layout_column="2"
             app:layout_row="2"
-            android:visibility="invisible"
             app:srcCompat="@drawable/frog22" />
+
+        // 2. Images 0.row
 
         <ImageView
             android:id="@+id/viewfrog100"
             android:layout_width="130dp"
             android:layout_height="170dp"
+            android:onClick="addScore"
             app:layout_column="0"
             app:layout_row="0"
             app:srcCompat="@drawable/frog11" />
@@ -124,6 +147,7 @@
             android:id="@+id/viewfrog101"
             android:layout_width="130dp"
             android:layout_height="170dp"
+            android:onClick="addScore"
             app:layout_column="1"
             app:layout_row="0"
             app:srcCompat="@drawable/frog11" />
@@ -132,16 +156,18 @@
             android:id="@+id/viewfrog102"
             android:layout_width="130dp"
             android:layout_height="170dp"
+            android:onClick="addScore"
             app:layout_column="2"
             app:layout_row="0"
             app:srcCompat="@drawable/frog11" />
 
-        //2.row for 1.frog
+        // 2. Image 1.row
 
         <ImageView
             android:id="@+id/viewfrog110"
             android:layout_width="130dp"
             android:layout_height="170dp"
+            android:onClick="addScore"
             app:layout_column="0"
             app:layout_row="1"
             app:srcCompat="@drawable/frog11" />
@@ -150,6 +176,7 @@
             android:id="@+id/viewfrog111"
             android:layout_width="130dp"
             android:layout_height="170dp"
+            android:onClick="addScore"
             app:layout_column="1"
             app:layout_row="1"
             app:srcCompat="@drawable/frog11" />
@@ -158,16 +185,18 @@
             android:id="@+id/viewfrog112"
             android:layout_width="130dp"
             android:layout_height="170dp"
+            android:onClick="addScore"
             app:layout_column="2"
             app:layout_row="1"
             app:srcCompat="@drawable/frog11" />
 
-        //3. row for 1. frog
+        //2. Images 2.row
 
         <ImageView
             android:id="@+id/viewfrog120"
             android:layout_width="130dp"
             android:layout_height="170dp"
+            android:onClick="addScore"
             app:layout_column="0"
             app:layout_row="2"
             app:srcCompat="@drawable/frog11" />
@@ -176,6 +205,7 @@
             android:id="@+id/viewfrog121"
             android:layout_width="130dp"
             android:layout_height="170dp"
+            android:onClick="addScore"
             app:layout_column="1"
             app:layout_row="2"
             app:srcCompat="@drawable/frog11" />
@@ -184,67 +214,57 @@
             android:id="@+id/viewfrog122"
             android:layout_width="130dp"
             android:layout_height="170dp"
+            android:onClick="addScore"
             app:layout_column="2"
             app:layout_row="2"
             app:srcCompat="@drawable/frog11" />
 
     </androidx.gridlayout.widget.GridLayout>
 
-    <TextView
-        android:id="@+id/viewName"
-        android:layout_width="199dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="84dp"
-        android:gravity="center_vertical"
-        android:text="Name"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
-        app:layout_constraintEnd_toStartOf="@+id/viewTimer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/viewTimer"
-        android:layout_width="55dp"
-        android:layout_height="21dp"
-        android:layout_marginEnd="44dp"
-        android:text="Timer"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="13dp" />
-
-    <TextView
-        android:id="@+id/viewMod"
-        android:layout_width="71dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Mod"
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayoutfoot"
+        android:layout_width="390dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        app:layout_constraintVertical_bias="0.375" />
-
-    <TextView
-        android:id="@+id/viewHighScore"
-        android:layout_width="87dp"
-        android:layout_height="22dp"
-        android:text="High Dcore"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/viewScore"
-        app:layout_constraintHorizontal_bias="0.341"
-        app:layout_constraintStart_toEndOf="@+id/viewMod"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        app:layout_constraintVertical_bias="0.653" />
-
-    <TextView
-        android:id="@+id/viewScore"
-        android:layout_width="64dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="44dp"
-        android:text="Score"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout">
+
+        <TextView
+            android:id="@+id/viewMod"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:text="Mod"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_column="0"
+            app:layout_row="0" />
+
+        <TextView
+            android:id="@+id/viewHighScore"
+            android:layout_width="190dp"
+            android:layout_height="25dp"
+            android:gravity="center"
+            android:text="High Dcore"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_column="2"
+            app:layout_row="0" />
+
+        <TextView
+            android:id="@+id/viewScore"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:text="Score"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_column="3"
+            app:layout_row="0" />
+
+    </androidx.gridlayout.widget.GridLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
