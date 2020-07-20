@@ -1,10 +1,8 @@
-package com.ismailbaser.frogcatch;
+package com.ismailbaser.frogcatch2;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,9 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 public class GameActivity extends AppCompatActivity {
     TextView viewname, viewscore, viewhighscore, viewtimer,viewmod;
@@ -27,26 +23,27 @@ public class GameActivity extends AppCompatActivity {
     ImageView[] imageArray1;
     ImageView[] imageArray2;
     Handler handler;
-    Runnable runnable;
-    long modint=1000;
+    Runnable runnable, runnable2;
+    int modint;
     int score;
-    int a= -1;
+    int a;
     int a2=-2;
     int i=-1;
     SharedPreferences sharedPreferences;
-    String userName, savedName;
+    String userName, savedName, gameMod;
     int savedHighScore;
 
-
     @Override
-    protected void onCreate(final Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
         viewname=findViewById(R.id.viewName);
         viewhighscore=findViewById(R.id.viewHighScore);
         viewmod=findViewById(R.id.viewMod);
         viewscore=findViewById(R.id.viewScore);
         viewtimer=findViewById(R.id.viewTimer);
+
         //******FROGS-1
         viewfrog00=findViewById(R.id.viewfrog00);
         viewfrog01=findViewById(R.id.viewfrog01);
@@ -76,87 +73,81 @@ public class GameActivity extends AppCompatActivity {
         imageArray1=new ImageView[]{viewfrog00, viewfrog01,viewfrog02, viewfrog10, viewfrog11, viewfrog12, viewfrog20, viewfrog21, viewfrog22};
         imageArray2=new ImageView[]{viewfrog100, viewfrog101, viewfrog102, viewfrog110, viewfrog111, viewfrog112, viewfrog120, viewfrog121, viewfrog122};
         hideImages();
-
-        sharedPreferences = this.getSharedPreferences("com.ismailbaser.frogcatch", Context.MODE_PRIVATE);
-        savedName = sharedPreferences.getString("userName","User");
-        savedHighScore = sharedPreferences.getInt("highscore", 0);
-
-        viewhighscore.setText("High Score: " + savedName + " - "  + savedHighScore);
-
         Intent intent=getIntent();
-        userName= intent.getStringExtra("userName");
+        userName=intent.getStringExtra("userName");
+        gameMod=intent.getStringExtra("mod");
+        viewname.setText("Merhaba "+userName);
+        viewmod.setText("Mod: "+gameMod);
+        viewtimer=findViewById(R.id.viewTimer);
 
-       viewname.setText("Hello " + intent.getStringExtra("userName"));
-       viewmod.setText(intent.getStringExtra("mod"));
-       score=0;
+        score=0;
 
-        if (intent.getStringExtra("mod").toString().equals("Mid")){
+        if (gameMod.toString().equals("Difficult")){
             modint=500;
 
         }
-        else if(intent.getStringExtra("mod").toString().equals("Difficult")){
+        else if(gameMod.toString().equals("Mid")){
             modint=750;
 
         }
-        else if(intent.getStringExtra("mod").toString().equals("Easy")){
+        else if(gameMod.toString().equals("Easy")){
             modint=1000;
 
         }
-        else if(intent.getStringExtra("mod").toString().equals("Very Difficult")){
+        else if(gameMod.toString().equals("Very difficult")){
             modint=250;
 
         }
         new CountDownTimer(11000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                viewtimer.setText("Time: " + millisUntilFinished/1000);
-
+                viewtimer.setText("Time : "+millisUntilFinished/1000);
             }
 
             @Override
             public void onFinish() {
                 viewtimer.setText("Time off");
-
-                if(Integer.parseInt(viewscore.getText().toString()) > savedHighScore){
-                    sharedPreferences.edit().putInt("highscore", Integer.parseInt(viewscore.getText().toString()));
-                    sharedPreferences.edit().putString("userName",userName);
-                }
                 handler.removeCallbacks(runnable);
+                handler.removeCallbacks(runnable2);
 
-                for (ImageView image:imageArray2){
-                    //oturan
-                    image.setVisibility(View.INVISIBLE);
-                }
                 for (ImageView image:imageArray1){
+
+                    image.setVisibility(View.INVISIBLE);
+                }
+                for (ImageView image:imageArray2){
+
                     image.setVisibility(View.INVISIBLE);
                 }
 
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(GameActivity.this);
-                alertDialog.setTitle("Restart");
-                alertDialog.setMessage("Are you sure to restart game?");
-                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                AlertDialog.Builder alert=new AlertDialog.Builder(GameActivity.this);
+                alert.setTitle("Restart");
+                alert.setMessage("Are you sure to restart game?");
+                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent=getIntent();
                         finish();
                         startActivity(intent);
+
                     }
                 });
-                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        Toast.makeText(GameActivity.this,"Game over!", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(GameActivity.this,"Game fnished", Toast.LENGTH_SHORT);
+                        Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                        finish();
+                        startActivity(intent);
 
                     }
                 });
-                alertDialog.show();
+                alert.show();
 
             }
         }.start();
-
-
     }
+
+
     public void addScore(View view){
 
         score+=1;
@@ -170,7 +161,6 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void run() {
                 for (ImageView image:imageArray2){
-                    //oturan
                     image.setVisibility(View.INVISIBLE);
                 }
                 for (ImageView image:imageArray1){
@@ -189,28 +179,21 @@ public class GameActivity extends AppCompatActivity {
                     i=a;
                 }
 
-
                 imageArray2[i].setVisibility(View.VISIBLE);
-
-                final Handler handler2 = new Handler();
-                handler2.postDelayed(new Runnable() {
+                runnable2=new Runnable() {
                     @Override
                     public void run() {
-
-                       imageArray2[i].setVisibility(View.INVISIBLE);
-                       imageArray1[i].setVisibility(View.VISIBLE);
+                        imageArray2[i].setVisibility(View.INVISIBLE);
+                        imageArray1[i].setVisibility(View.VISIBLE);
 
                     }
-                }, modint-25);
+                };
+                handler.postDelayed(runnable2, modint-200);
 
-               imageArray1[i].setVisibility(View.INVISIBLE);
-
-
-                handler.postDelayed(this, modint);
+                handler.postDelayed(runnable, modint);
 
             }
         };
         handler.post(runnable);
-
     }
 }
