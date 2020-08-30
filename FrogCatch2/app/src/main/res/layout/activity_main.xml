@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Player Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="303dp"
+        android:layout_height="308dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtName"
+        app:srcCompat="@drawable/frog00" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="378dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="checkButton"
+            android:text="Easy" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="71dp"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="Mid" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="Difficult" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="126dp"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="Very difficult" />
+
+
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/btnOnPlayGame"
+        android:layout_width="159dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="240dp"
+        android:onClick="onplayGame"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.444"
+        app:srcCompat="@drawable/start11" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

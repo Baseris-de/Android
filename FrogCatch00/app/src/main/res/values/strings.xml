@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FrogCatch2</string>
+    <string name="user_name">user Name</string>
+    <string name="timer">Timer</string>
+    <string name="mod">Mod</string>
+    <string name="highscore">HighScore</string>
+    <string name="score">Score</string>
+</resources>
